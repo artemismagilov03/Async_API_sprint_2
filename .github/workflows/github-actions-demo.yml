@@ -45,10 +45,7 @@ jobs:
           # testing
           pytest -sv
           coverage run -m pytest
-          coverage report -m
-          
-          # stop containers
-          docker compose down     
+          coverage report -m   
 
       - name: List files in the repository
         run: |
