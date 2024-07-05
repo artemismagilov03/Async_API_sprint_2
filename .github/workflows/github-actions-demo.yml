@@ -28,7 +28,7 @@ jobs:
           
           # start databases
           cd Async_API_sprint_1
-          docker compose up -d postgres elastic-search
+          docker compose up -d postgres elastic-search redis
           sleep 30
           
           # init indexes
