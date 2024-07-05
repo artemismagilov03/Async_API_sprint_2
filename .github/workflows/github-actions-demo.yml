@@ -27,7 +27,7 @@ jobs:
           ruff format --check
           
           # start databases
-          cd Async_API_sprint_1
+          cd movie_service
           docker compose up -d postgres elastic-search redis
           sleep 30
           
@@ -37,7 +37,7 @@ jobs:
           bash scripts/init_indexes_es/curl_persons_index.bash
           
           # migrate data to elastic
-          cd etl
+          cd etl/
           python -m etl.etl_single_migrate
           docker compose down postgres
           cd ../../

@@ -3,7 +3,7 @@ import sys
 import pytest
 from fastapi.testclient import TestClient
 
-sys.path.append('Async_API_sprint_1/movies_api')
+sys.path.append('movie_service/movies_api')
 from movies_api.main import app
 
 
