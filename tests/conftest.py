@@ -4,7 +4,7 @@ import pytest
 
 from fastapi.testclient import TestClient
 
-sys.path.append("Async_API_sprint_1/movies_api")
+sys.path.append('Async_API_sprint_1/movies_api')
 from movies_api.main import app
 
 
@@ -16,4 +16,4 @@ def client():
 
 @pytest.fixture
 def api_v1_films():
-    return "/api/v1/films"
+    return '/api/v1/films'
