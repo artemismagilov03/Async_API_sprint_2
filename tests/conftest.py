@@ -1,7 +1,6 @@
 import sys
 
 import pytest
-
 from fastapi.testclient import TestClient
 
 sys.path.append('Async_API_sprint_1/movies_api')

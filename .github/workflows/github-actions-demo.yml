@@ -1,0 +1,33 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - run: |
+          pip install -r requirements.txt
+          
+          ruff check
+          ruff format --check
+          
+          cd Async_API_sprint_1
+          docker compose up -d postgres elastic-search redis
+          sleep 30
+          docker compose up -d etl-app
+          sleep 10
+          docker compose down etl-app
+          cd ..
+          
+          pytest -sv
+          coverage run -m pytest
+          coverage report -m
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
