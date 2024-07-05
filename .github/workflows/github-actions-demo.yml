@@ -27,14 +27,14 @@ jobs:
           # start databases
           cd Async_API_sprint_1
           docker compose up -d postgres elastic-search redis
-          sleep 30
+          sleep 60
           # init indexes
           bash scripts/init_indexes_es/curl_movies_index.bash
           bash scripts/init_indexes_es/curl_genres_index.bash
           bash scripts/init_indexes_es/curl_persons_index.bash
           # migrate data to elastic
           docker compose up -d etl-app
-          sleep 30
+          sleep 60
           docker compose down etl-app
           cd ..
           # testing
