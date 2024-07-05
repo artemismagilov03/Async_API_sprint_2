@@ -21,3 +21,8 @@ def api_v1_films():
 @pytest.fixture
 def api_v1_genres():
     return '/api/v1/genres'
+
+
+@pytest.fixture
+def api_v1_persons():
+    return '/api/v1/persons'

@@ -19,11 +19,11 @@ def test_list_films(client, api_v1_films, endpoint='/'):
     )
     assert response.status_code == 200
 
-    # fetch data from redis
+    # fetch films from redis
     response = client.get(api_v1_films + endpoint)
     assert response.status_code == 200
 
-    # not exists data
+    # not exists films
     response = client.get(
         api_v1_films + endpoint,
         params={
@@ -61,11 +61,11 @@ def test_search_films(client, api_v1_films, endpoint='/search'):
     )
     assert response.status_code == 200
 
-    # fetch data from redis
+    # fetch films from redis
     response = client.get(api_v1_films + endpoint)
     assert response.status_code == 200
 
-    # not exists data
+    # not exists films
     response = client.get(
         api_v1_films + endpoint,
         params={
@@ -98,11 +98,11 @@ def test_person_films(client, api_v1_films, endpoint='/37c36461-9a0d-4fd9-b257-f
     )
     assert response.status_code == 200
 
-    # fetch data from redis
+    # fetch films by person from redis
     response = client.get(api_v1_films + endpoint)
     assert response.status_code == 200
 
-    # not exists data
+    # not exists films
     response = client.get(
         api_v1_films + '37c36461-9a0d-4fd9-b257-fae0b2b6e999',
         params={
@@ -119,10 +119,10 @@ def test_uuid_film(client, api_v1_films, endpoint='/01ab9e34-4ceb-4337-bb69-68a1
     response = client.get(api_v1_films + endpoint)
     assert response.status_code == 200
 
-    # fetch data from redis
+    # fetch film by uuid from redis
     response = client.get(api_v1_films + endpoint)
     assert response.status_code == 200
 
-    # not exists data
+    # not exists film by uuid
     response = client.get(api_v1_films + '/37c36461-9a0d-4fd9-b257-fae0b2b6e999')
     assert response.status_code == 404

@@ -15,11 +15,11 @@ def test_list_genres(client, api_v1_genres, endpoint='/'):
     )
     assert response.status_code == 200
 
-    # fetch data from redis
+    # fetch genres from redis
     response = client.get(api_v1_genres + endpoint)
     assert response.status_code == 200
 
-    # not exists data, to large page_number
+    # not exists genres, to large page_number
     response = client.get(
         api_v1_genres + endpoint,
         params={
@@ -49,11 +49,11 @@ def test_search_genres(client, api_v1_genres, endpoint='/search'):
     )
     assert response.status_code == 200
 
-    # fetch data from redis
+    # fetch searched genres from redis
     response = client.get(api_v1_genres + endpoint)
     assert response.status_code == 200
 
-    # not exists data, to large page_number
+    # not exists genres, to large page_number
     response = client.get(
         api_v1_genres + endpoint,
         params={
@@ -70,10 +70,10 @@ def test_uuid_genre(client, api_v1_genres, endpoint='/0b105f87-e0a5-45dc-8ce7-f8
     response = client.get(api_v1_genres + endpoint)
     assert response.status_code == 200
 
-    # fetch data from redis
+    # fetch genre by uuid from redis
     response = client.get(api_v1_genres + endpoint)
     assert response.status_code == 200
 
-    # not exists data
+    # not exists genre by uuid
     response = client.get(api_v1_genres + '/0b105f87-e0a5-45dc-8ce7-f8632088f999')
     assert response.status_code == 404
