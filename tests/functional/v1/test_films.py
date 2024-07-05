@@ -70,7 +70,7 @@ def test_search_films(client, api_v1_films, endpoint='/search'):
     assert response.status_code == 404
 
 
-def test_person_films(client, api_v1_films, endpoint='/37c36461-9a0d-4fd9-b257-fae0b2b6e8ad/film'):
+def test_person_films(client, api_v1_films, fake_uuid, endpoint='/37c36461-9a0d-4fd9-b257-fae0b2b6e8ad/film'):
     # by person films from 0 with size 10
     response = client.get(api_v1_films + endpoint)
     assert response.status_code == 200
@@ -93,7 +93,7 @@ def test_person_films(client, api_v1_films, endpoint='/37c36461-9a0d-4fd9-b257-f
 
     # not exists films
     response = client.get(
-        api_v1_films + '/37c36461-9a0d-4fd9-b257-fae0b2b6e999/film',
+        api_v1_films + f'/{fake_uuid}/film',
         params={
             'sort': 'id',
             'page_number': 0,
@@ -103,7 +103,7 @@ def test_person_films(client, api_v1_films, endpoint='/37c36461-9a0d-4fd9-b257-f
     assert response.status_code == 404
 
 
-def test_uuid_film(client, api_v1_films, endpoint='/01ab9e34-4ceb-4337-bb69-68a1b0de46b2'):
+def test_uuid_film(client, api_v1_films, fake_uuid, endpoint='/01ab9e34-4ceb-4337-bb69-68a1b0de46b2'):
     # get film by uuid
     response = client.get(api_v1_films + endpoint)
     assert response.status_code == 200
@@ -113,5 +113,5 @@ def test_uuid_film(client, api_v1_films, endpoint='/01ab9e34-4ceb-4337-bb69-68a1
     assert response.status_code == 200
 
     # not exists film by uuid
-    response = client.get(api_v1_films + '/37c36461-9a0d-4fd9-b257-fae0b2b6e999')
+    response = client.get(api_v1_films + f'/{fake_uuid}')
     assert response.status_code == 404

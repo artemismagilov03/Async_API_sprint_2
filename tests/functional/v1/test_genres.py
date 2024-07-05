@@ -65,7 +65,7 @@ def test_search_genres(client, api_v1_genres, endpoint='/search'):
     assert response.status_code == 404
 
 
-def test_uuid_genre(client, api_v1_genres, endpoint='/0b105f87-e0a5-45dc-8ce7-f8632088f390'):
+def test_uuid_genre(client, api_v1_genres, fake_uuid, endpoint='/0b105f87-e0a5-45dc-8ce7-f8632088f390'):
     # get genre by uuid
     response = client.get(api_v1_genres + endpoint)
     assert response.status_code == 200
@@ -75,5 +75,5 @@ def test_uuid_genre(client, api_v1_genres, endpoint='/0b105f87-e0a5-45dc-8ce7-f8
     assert response.status_code == 200
 
     # not exists genre by uuid
-    response = client.get(api_v1_genres + '/0b105f87-e0a5-45dc-8ce7-f8632088f999')
+    response = client.get(api_v1_genres + f'/{fake_uuid}')
     assert response.status_code == 404

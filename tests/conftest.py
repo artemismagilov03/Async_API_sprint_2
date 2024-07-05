@@ -14,6 +14,11 @@ def client():
 
 
 @pytest.fixture
+def fake_uuid():
+    return '0031feab-8f53-412a-8f53-47098a60a999'
+
+
+@pytest.fixture
 def api_v1_films():
     return '/api/v1/films'
 

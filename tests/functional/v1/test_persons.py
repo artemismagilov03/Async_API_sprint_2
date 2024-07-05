@@ -65,3 +65,17 @@ def test_search_films(client, api_v1_persons, endpoint='/search'):
     # not exists films after search
     response = client.get(api_v1_persons + endpoint, params={'query': 'fake'})
     assert response.status_code == 404
+
+
+def test_uuid_person(client, api_v1_persons, fake_uuid, endpoint='/00a770fc-8964-41fa-9d3b-f6c958c9dddb'):
+    # get person by uuid
+    response = client.get(api_v1_persons + endpoint)
+    assert response.status_code == 200
+
+    # fetch person by uuid from redis
+    response = client.get(api_v1_persons + endpoint)
+    assert response.status_code == 200
+
+    # not exists film by uuid
+    response = client.get(api_v1_persons + f'/{fake_uuid}')
+    assert response.status_code == 404
