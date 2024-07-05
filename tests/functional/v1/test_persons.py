@@ -11,9 +11,9 @@ def test_list_persons(client, api_v1_persons, endpoint='/'):
             'sort': 'id',
             'page_number': 0,
             'page_size': 10,
-            'actor': 'Mazzy Star',
-            'director': 'Walter C. Miller',
-            'writer': 'Tony Cooke',
+            'actor': 'John Sayles',
+            'director': 'John Sayles',
+            'writer': 'John Sayles',
         },
     )
     assert response.status_code == 200
@@ -37,7 +37,7 @@ def test_list_persons(client, api_v1_persons, endpoint='/'):
     assert response.status_code == 404
 
 
-def test_search_films(client, api_v1_persons, endpoint='/search'):
+def test_search_persons(client, api_v1_persons, endpoint='/search'):
     # search all persons from 0 with size 10
     response = client.get(api_v1_persons + endpoint)
     assert response.status_code == 200
@@ -47,14 +47,14 @@ def test_search_films(client, api_v1_persons, endpoint='/search'):
     response = client.get(
         api_v1_persons + endpoint,
         params={
-            'query': 'Mazzy',
+            'query': 'John',
             'sort': 'id',
             'page_number': 0,
             'page_size': 10,
-            'actor': 'Mazzy Star',
-            'director': 'Walter C. Miller',
-            'writer': 'Tony Cooke',
-        },
+            'actor': 'John Sayles',
+            'director': 'John Sayles',
+            'writer': 'John Sayles',
+        }
     )
     assert response.status_code == 200
 
