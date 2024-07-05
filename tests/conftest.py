@@ -16,4 +16,4 @@ def client():
 
 @pytest.fixture
 def api_v1_films():
-    return '/api/v1/films'
+    return "/api/v1/films"
