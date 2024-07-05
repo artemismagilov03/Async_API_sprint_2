@@ -66,18 +66,7 @@ def test_search_films(client, api_v1_films, endpoint='/search'):
     assert response.status_code == 200
 
     # not exists films
-    response = client.get(
-        api_v1_films + endpoint,
-        params={
-            'sort': 'id',
-            'page_number': 0,
-            'page_size': 10,
-            'genre': 'fake',
-            'actor': 'fake',
-            'director': 'fake',
-            'writer': 'fake',
-        },
-    )
+    response = client.get(api_v1_films + endpoint, params={'query': 'fake'})
     assert response.status_code == 404
 
 
@@ -104,7 +93,7 @@ def test_person_films(client, api_v1_films, endpoint='/37c36461-9a0d-4fd9-b257-f
 
     # not exists films
     response = client.get(
-        api_v1_films + '37c36461-9a0d-4fd9-b257-fae0b2b6e999',
+        api_v1_films + '/37c36461-9a0d-4fd9-b257-fae0b2b6e999/film',
         params={
             'sort': 'id',
             'page_number': 0,
