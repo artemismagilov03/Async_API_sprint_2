@@ -11,7 +11,7 @@ def test_list_persons(client, api_v1_persons, endpoint='/'):
             'sort': 'id',
             'page_number': 0,
             'page_size': 10,
-            #'actor': 'John Sayles',
+            'actor': 'John Sayles',
             'director': 'John Sayles',
             'writer': 'John Sayles',
         },
