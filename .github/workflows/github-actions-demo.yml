@@ -34,7 +34,7 @@ jobs:
           bash scripts/init_indexes_es/curl_persons_index.bash
           # migrate data to elastic
           docker compose up -d etl-app
-          sleep 10
+          sleep 30
           docker compose down etl-app
           cd ..
           # testing
