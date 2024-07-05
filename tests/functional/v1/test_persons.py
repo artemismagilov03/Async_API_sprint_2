@@ -58,21 +58,10 @@ def test_search_films(client, api_v1_persons, endpoint='/search'):
     )
     assert response.status_code == 200
 
-    # fetch films from redis
-    response = client.get(api_v1_films + endpoint)
+    # fetch searched films from redis
+    response = client.get(api_v1_persons + endpoint)
     assert response.status_code == 200
 
-    # not exists films
-    response = client.get(
-        api_v1_films + endpoint,
-        params={
-            'query': 'fake',
-            'sort': 'id',
-            'page_number': 0,
-            'page_size': 10,
-            'actor': 'fake',
-            'director': 'fake',
-            'writer': 'fake',
-        },
-    )
+    # not exists films after search
+    response = client.get(api_v1_persons + endpoint, params={'query': 'fake'})
     assert response.status_code == 404
