@@ -16,3 +16,8 @@ def client():
 @pytest.fixture
 def api_v1_films():
     return '/api/v1/films'
+
+
+@pytest.fixture
+def api_v1_genres():
+    return '/api/v1/genres'
