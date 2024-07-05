@@ -115,7 +115,7 @@ def test_person_films(client, api_v1_films, endpoint='/37c36461-9a0d-4fd9-b257-f
 
 
 def test_uuid_film(client, api_v1_films, endpoint='/01ab9e34-4ceb-4337-bb69-68a1b0de46b2'):
-    # by uuid film
+    # get film by uuid
     response = client.get(api_v1_films + endpoint)
     assert response.status_code == 200
 
