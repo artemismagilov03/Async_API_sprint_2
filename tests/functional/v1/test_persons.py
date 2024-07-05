@@ -54,7 +54,7 @@ def test_search_persons(client, api_v1_persons, endpoint='/search'):
             'actor': 'John Sayles',
             'director': 'John Sayles',
             'writer': 'John Sayles',
-        }
+        },
     )
     assert response.status_code == 200
 
