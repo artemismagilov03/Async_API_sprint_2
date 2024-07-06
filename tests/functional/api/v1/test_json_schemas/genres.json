@@ -5,7 +5,12 @@
       "type": "string"
     },
     "name": {
-        "type": "string"
-      }
-  }
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ],
+  "additionalProperties": false
 }
