@@ -47,7 +47,7 @@ jobs:
           pytest -sv
           
           # flush all data from cache
-          docker exec -it redis sh -c "redis-cli FLUSHALL"
+          docker exec --rm -t -it redis sh -c "redis-cli FLUSHALL"
           
           # test coverage
           coverage run -m pytest
