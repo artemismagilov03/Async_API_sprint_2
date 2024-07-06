@@ -48,7 +48,7 @@ jobs:
           
           # flush all data from cache
           cd movie_service/
-          docker compose exec redis-local sh -c "redis-cli FLUSHALL"
+          docker compose -f compose-local.yaml exec redis-local sh -c "redis-cli FLUSHALL"
           cd ../
           
           # test coverage
