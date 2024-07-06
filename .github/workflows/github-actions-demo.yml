@@ -29,7 +29,7 @@ jobs:
           
           # start databases
           cd movie_service/
-          docker compose up -d postgres elastic-search redis
+          docker compose -f compose-local.yaml up -d
           until curl --output /dev/null --silent --head --fail http://127.0.0.1:9200; do
               printf '.'
               sleep 5
@@ -41,14 +41,14 @@ jobs:
           # migrate data to elastic
           cd etl/
           python -m etl.etl_single_migrate
-          docker compose down postgres
+          docker compose down postgres-local
           cd ../../
           
           # testing
           pytest -sv
           
           # flush all data from cache
-          docker exec -it redis sh -c "redis-cli FLUSHALL"
+          docker exec -it redis-local sh -c "redis-cli FLUSHALL"
           
           # test coverage
           coverage run -m pytest
