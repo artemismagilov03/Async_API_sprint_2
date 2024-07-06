@@ -41,7 +41,6 @@ jobs:
           # migrate data to elastic
           cd etl/
           python -m etl.etl_single_migrate
-          docker compose down postgres-local
           cd ../../
           
           # testing
