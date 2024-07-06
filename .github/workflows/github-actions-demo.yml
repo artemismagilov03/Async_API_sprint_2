@@ -27,7 +27,7 @@ jobs:
           ruff format --check
           
           # start databases
-          cd movie_service
+          cd movie_service/
           docker compose up -d postgres elastic-search redis
           until curl --output /dev/null --silent --head --fail http://127.0.0.1:9200; do
               printf '.'
@@ -45,11 +45,10 @@ jobs:
           
           # testing
           pytest -sv
-          cd movie_service
           
           # flush all data from cache
-          docker compose down redis
-          docker compose up redis
+          cd movie_service/
+          docker exec -it redis /bin/sh -c "redis-cli FLUSHALL"
           cd ../
           
           # test coverage
