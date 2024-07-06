@@ -21,7 +21,7 @@ jobs:
       - shell: 'script --return --quiet --log-out /dev/null --command "bash -e {0}"'
         run: |
           # install depends
-          pip install -r requirements.txt
+          pip install -r requirements-test.txt
           
           # linting
           ruff check
