@@ -47,7 +47,9 @@ jobs:
           pytest -sv
           
           # flush all data from cache
-          docker exec -it redis-local sh -c "redis-cli FLUSHALL"
+          cd movie_service/
+          docker compose exec redis-local sh -c "redis-cli FLUSHALL"
+          cd ../
           
           # test coverage
           coverage run -m pytest
