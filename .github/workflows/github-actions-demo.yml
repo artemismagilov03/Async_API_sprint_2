@@ -45,6 +45,14 @@ jobs:
           
           # testing
           pytest -sv
+          cd movie_service
+          
+          # flush all data from cache
+          docker compose down redis
+          docker compose up redis
+          cd ../
+          
+          # test coverage
           coverage run -m pytest
           coverage report -m   
 
